@@ -1,0 +1,68 @@
+{% extends 'Core/base.html' %}
+{% load static %}
+{% block headcontent %}
+{% endblock headcontent%} 
+<style>
+    .videothumbs {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+    }
+
+    .videothumbs a {
+        position: relative;
+        display: inline-block;
+        width: 320px;
+        height: 180px;
+        margin: 1em;
+        box-shadow: 4px 5px 6px 0px rgba(0, 0, 0, 0.5);
+        border-radius: 4%;
+        transition: all 0.5s;
+    }
+
+    /* Raise and enlarge slightly on mouseover */
+    .videothumbs a:hover {
+        transform: scale(1.1);
+        box-shadow: 6px 7px 8px 2px rgba(0, 0, 0, 0.4);
+    }
+
+    .videothumbs a img {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        border-radius: 4%;
+    }
+
+    .videothumbs a span {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: white;
+        text-align: center;
+        z-index: 2000;
+        font-size: 90%;
+    }
+</style>
+
+{% block maincontent %}
+
+   <h1> Indice dos Videos  </h1>
+
+    <p> Selecione o Video para Assistir </p>
+  
+        {% for video in  object_list %}    
+    <a href="https://www.youtube.com/watch?v={{video.youtube_vid}}">
+    <img src="http://i3.ytimg.com/vi/{{video.youtube_vid}}/mqdefault.jpg" class="" alt="">
+    </a>
+       {% endfor %}
+
+{% endblock maincontent %}
